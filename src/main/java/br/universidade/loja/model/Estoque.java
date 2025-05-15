@@ -13,8 +13,7 @@ public class Estoque {
     private Produto produto;
     private Integer quantidade;
 
-    public Estoque(Long id, Produto produto, Integer quantidade) {
-        this.id = id;
+    public Estoque(Produto produto, Integer quantidade) {
         this.produto = produto;
         this.quantidade = quantidade;
     }

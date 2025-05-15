@@ -12,9 +12,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @SpringBootApplication
-public class LojaApplication implements CommandLineRunner {
+public class LojaApplication {
 	@Autowired
 	private CategoriaRepository catRepo;
 	@Autowired
@@ -27,24 +28,47 @@ public class LojaApplication implements CommandLineRunner {
     public static void main(String[] args) {
 		SpringApplication.run(LojaApplication.class, args);
 	}
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println("Loja inicializada!");
-		Categoria c1 = new Categoria();
-		c1.setNome("Eletrônicos");
-		catRepo.save(c1);
-
-		Produto p1 = new Produto();
-		p1.setNome("Smartphone");
-		p1.setPreco(new BigDecimal("1500.00"));
-		p1.setCategoria(c1);
-		prodRepo.save(p1);
-
-		Estoque e1 = new Estoque();
-		e1.setProduto(p1);
-		e1.setQuantidade(50);
-
-		estRepo.save(e1);
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+////		System.out.println("Loja inicializada!");
+////		Categoria info = new Categoria("Informática");
+////		Categoria perif = new Categoria("Periféricos");
+////		Categoria acess = new Categoria("Acessórios");
+////		catRepo.saveAll(List.of(info, perif, acess));
+////
+////		Produto note = new Produto("Notebook",new BigDecimal("3500.00"),info);
+////		Produto impressora = new Produto("Impressora",new BigDecimal("750.50"),perif);
+////		Produto monitor = new Produto("Monitor",new BigDecimal("1800.90"),perif);
+////		Produto teclado = new Produto("Teclado",new BigDecimal("300.75"),acess);
+////		Produto Mouse = new Produto("Mouse",new BigDecimal("189.00"),acess);
+////
+////		prodRepo.saveAll(List.of(note, impressora, monitor, teclado, Mouse));
+////
+////		Estoque est1 = new Estoque(note, 50);
+////		Estoque est2 = new Estoque(impressora, 10);
+////		Estoque est3 = new Estoque(monitor, 15);
+////		Estoque est4 = new Estoque(teclado, 66);
+////		Estoque est5 = new Estoque(Mouse, 33);
+////
+////		estRepo.saveAll(List.of(est1, est2, est3, est4, est5));
+//		List<Produto> produtoCat =  prodRepo.findByCategoriaNome("Periféricos");
+//		produtoCat.forEach(p -> System.out.println(p.getNome()));
+//
+//		List<Produto> produtoCaro =
+//				prodRepo.findByPrecoGreaterThan(new BigDecimal("500.00"));
+//
+//		produtoCaro.forEach(p->
+//				System.out.println(p.getNome()+" | "+p.getPreco()));
+//
+//		System.out.println("Existe o Produto Informado: "+
+//				prodRepo.existsByNome("Note"));
+//
+//		List<Estoque> estoqueList =  estRepo.findByCategoriaNome("Acessórios");
+//		estoqueList.forEach(e -> System.out.println(e.getProduto().getNome()));
+//
+//		int quantidade = estRepo.findQuantidadeByNome("Monitor");
+//		System.out.println("Quantidade de Monitor: "+quantidade);
+//
+//	}
 
 }
